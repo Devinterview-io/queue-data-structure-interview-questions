@@ -2,8 +2,6 @@
 
 # Top 14 Queues interview questions and answers in 2021.
 
-[![ https://source.unsplash.com/collection/52661698/700x350) https://devinterview.io/)
-
 You can check all 14 Queues interview questions here 👉 https://devinterview.io/data/queues-interview-questions
 
 <div data-v-5e9078c0="" class="unit">
