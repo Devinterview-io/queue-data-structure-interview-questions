@@ -4,7 +4,7 @@
 
 Check out our carefully selected list of **basic** and **advanced** Queues questions and answers to be well-prepared for your tech interviews in 2024.
 
-![Queues Decorative Image](https://storage.googleapis.com/dev-stack-app.appspot.com/blogImg/queues.png?GoogleAccessId=firebase-adminsdk-bgeaf%40dev-stack-app.iam.gserviceaccount.com&Expires=1698606377&Signature=CbC%2FYlCci65sfckJx6cR%2BwByfX7Byj75nEDAFBjUEfnb0aH9sw0be4K46ZvFzELv%2FCTGUg5lge3f9Z7rll12sXv7jlILGQ9f1jmo6pR9AP4mvAQudZDJbZ7Q%2BlhdKoAVEeLFMilAlP%2FhnITj1%2B5jRImnyC1KuvrTOabogv6hY0rTVBRzV7THc3ZhH9XQijVZo5kwV4d3gVlk5o2vTuUTnokglQtSUrdAJPIFwYHOGI8L4G%2FroZN68hwaibBCVvND%2FFtKOPN70Ms9ny8Kn1u9yBG%2Fw%2FecpjgLIJ4S2meNAQBnwvXWkwcXmjBKfoo5k16IiRSSaGwNPFIjNgTlTxgCsA%3D%3D)
+![Queues Decorative Image](https://firebasestorage.googleapis.com/v0/b/dev-stack-app.appspot.com/o/blogImg%2Fqueues.png?alt=media&token=597d573d-f34c-46c1-80af-eaf48688f1ac&_gl=1*18tzwlp*_ga*OTYzMjY5NTkwLjE2ODg4NDM4Njg.*_ga_CW55HF8NVT*MTY5ODYwNTk1NS4xOTAuMS4xNjk4NjA3MTAxLjExLjAuMA..)
 
 👉🏼 You can also find all answers here: [Devinterview.io - Queues](https://devinterview.io/data/queues-interview-questions)
 
