@@ -1,955 +1,508 @@
-<div data-v-5e9078c0="">
+# ⚫ Queues in Tech Interviews 2024: Top 9 Questions & Answers
 
-# Top 14 Queues interview questions and answers in 2021.
+**Queues** are linear data structures that follow the First In, First Out (FIFO) principle, ensuring that the first element added is the first element to be removed. They are fundamental in various computer operations like task scheduling and breadth-first search. In coding interviews, questions about queues assess a candidate's understanding of **sequential data processing** and its applications in different scenarios.
 
-You can check all 14 Queues interview questions here 👉 https://devinterview.io/data/queues-interview-questions
+Check out our carefully selected list of **basic** and **advanced** Queues questions and answers to be well-prepared for your tech interviews in 2024.
 
-<div data-v-5e9078c0="" class="unit">
+![Queues Decorative Image](https://storage.googleapis.com/dev-stack-app.appspot.com/blogImg/queues.png?GoogleAccessId=firebase-adminsdk-bgeaf%40dev-stack-app.iam.gserviceaccount.com&Expires=1698606377&Signature=CbC%2FYlCci65sfckJx6cR%2BwByfX7Byj75nEDAFBjUEfnb0aH9sw0be4K46ZvFzELv%2FCTGUg5lge3f9Z7rll12sXv7jlILGQ9f1jmo6pR9AP4mvAQudZDJbZ7Q%2BlhdKoAVEeLFMilAlP%2FhnITj1%2B5jRImnyC1KuvrTOabogv6hY0rTVBRzV7THc3ZhH9XQijVZo5kwV4d3gVlk5o2vTuUTnokglQtSUrdAJPIFwYHOGI8L4G%2FroZN68hwaibBCVvND%2FFtKOPN70Ms9ny8Kn1u9yBG%2Fw%2FecpjgLIJ4S2meNAQBnwvXWkwcXmjBKfoo5k16IiRSSaGwNPFIjNgTlTxgCsA%3D%3D)
 
-<div>
+👉🏼 You can also find all answers here: [Devinterview.io - Queues](https://devinterview.io/data/queues-interview-questions)
 
-## 🔹 1\. List some Queue real-life applications
+---
 
-</div>
+## 🔹 1. What is a _Queue_?
 
-<div>
+### Answer
 
-### Answer:
+A **queue** is a data structure that adheres to the **First-In-First-Out (FIFO)** principle and is designed to hold a collection of elements.
 
-<div class="answer">
+### Core Operations
 
-<div>
+-  **Enqueue**: Adding an element to the end of the queue.
+-  **Dequeue**: Removing an element from the front of the queue.
+- **IsEmpty**: Checks if the queue is empty.
+- **IsFull**: Checks if the queue has reached its capacity.
+- **Peek**: Views the front element without removal.
 
-<div>
+All operations have a space complexity of $O(1)$ and time complexity of $O(1)$, except for **Search**, which has $O(n)$ time complexity.
 
-<div class="AnswerBody">
+### Key Characteristics
 
-Queue, as the name suggests is used whenever we need to manage any group of objects in an order in which the first one coming in, also gets out first while the others wait for their turn, like in the following scenarios:
+1. **Order**: Maintains the order of elements according to their arrival time.
+2. **Size**: Can be either bounded (fixed size) or unbounded (dynamic size).
+3. **Accessibility**: Typically provides only restricted access to elements in front and at the rear.
+4. **Time Complexity**: The time required to perform enqueue and dequeue is usually $O(1)$.
 
-*   Serving requests on a single shared resource, like a printer, CPU task scheduling etc.
-*   In real life scenario, Call Center phone systems uses Queues to hold people calling them in an order, until a service representative is free.
-*   Handling of interrupts in real-time systems. The interrupts are handled in the same order as they arrive i.e First come first served.
+### Visual Representation
 
-</div>
+![Queue](https://firebasestorage.googleapis.com/v0/b/dev-stack-app.appspot.com/o/queues%2Fsimple-queue.svg?alt=media&token=976157b7-407b-4523-b8df-61f79bc1fafc)
 
-</div>
+### Real-World Examples
 
-<div class="row my-2">
+-  **Ticket Counter**: People form a queue, and the first person who joined the queue gets the ticket first.
+-  **Printer Queue**: Print jobs are processed in the order they were sent to the printer.
 
-<div><span>Source: <span>www.studytonight.com https://www.studytonight.com/data-structures/queue-data-structure "List some Queue real-life applications Interview Questions Source To Answer"</span></span>   </div>
+### Practical Applications
 
-</div>
+1. **Task Scheduling**: Used by operating systems for managing processes ready to execute or awaiting specific events.
+2. **Handling of Requests**: Servers in multi-threaded environments queue multiple user requests, processing them in arrival order.
+3. **Data Buffering**: Supports asynchronous data transfers between processes, such as in IO buffers and pipes.
+4. **Breadth-First Search**: Employed in graph algorithms, like BFS, to manage nodes for exploration.
+5. **Order Processing**: E-commerce platforms queue customer orders for processing.
+6. **Call Center Systems**: Incoming calls wait in a queue before connecting to the next available representative.
 
-</div>
+### Code Example: Queue
 
-</div>
+Here is the Python code:
 
-</div>
+```python
+from collections import deque
 
-</div>
+class Queue:
+    def __init__(self):
+        self.queue = deque()
 
-<div data-v-5e9078c0="" class="unit">
+    def enqueue(self, item):
+        self.queue.append(item)
 
-<div>
+    def dequeue(self):
+        if not self.is_empty():
+            return self.queue.popleft()
+        raise Exception("Queue is empty.")
 
-## 🔹 2\. What is Queue?
+    def size(self):
+        return len(self.queue)
 
-</div>
+    def is_empty(self):
+        return len(self.queue) == 0
 
-<div>
+    def front(self):
+        if not self.is_empty():
+            return self.queue[0]
+        raise Exception("Queue is empty.")
 
-### Answer:
+    def rear(self):
+        if not self.is_empty():
+            return self.queue[-1]
+        raise Exception("Queue is empty.")
 
-<div class="answer">
+# Example Usage
+q = Queue()
+q.enqueue(5)
+q.enqueue(6)
+q.enqueue(3)
+q.enqueue(2)
+q.enqueue(7)
+print("Queue:", list(q.queue))
+print("Front:", q.front())
+print("Rear:", q.rear())
+q.dequeue()
+print("After dequeue:", list(q.queue))
+```
+
+---
+
+## 🔹 2. Name some _Types of Queue_.
+
+### Answer
+
+**Queues** are adaptable data structures with diverse types, each optimized for specific tasks. Let's explore the different forms of queues and their functionalities.
+
+### Simple Queue
+
+A **Simple Queue** follows the basic **FIFO** principle. This means items are added at the end and removed from the beginning.
+
+#### Visual Representation
+
+![Simple Queue](https://firebasestorage.googleapis.com/v0/b/dev-stack-app.appspot.com/o/queues%2Fsimple-queue.svg?alt=media&token=976157b7-407b-4523-b8df-61f79bc1fafc)
+
+#### Implementation
+
+Here is the Python code:
+
+```python
+class SimpleQueue:
+    def __init__(self):
+        self.queue = []
+    
+    def enqueue(self, item):
+        self.queue.append(item)
+    
+    def dequeue(self):
+        if not self.is_empty():
+            return self.queue.pop(0)
+    
+    def is_empty(self):
+        return len(self.queue) == 0
+    
+    def size(self):
+        return len(self.queue)
+```
+
+### Circular Queue
+
+In a **Circular Queue** the last element points to the first element, making a circular link.  This structure uses a **fixed-size array** and can wrap around upon reaching the end. It's more **memory efficient** than a Simple Queue, reusing positions at the front that are left empty by the dequeue operations.
 
-<div>
+#### Visual Representation
 
-<div>
+![Circular Queue](https://firebasestorage.googleapis.com/v0/b/dev-stack-app.appspot.com/o/queues%2Fcircular-queue.svg?alt=media&token=31e68b64-92a8-45f7-84c4-0ba8eb929ee8)
 
-<div class="AnswerBody">
+#### Implementation
 
-A **queue** is a container of objects (a _linear_ collection) that are inserted and removed according to the first-in first-out (FIFO) principle. The process to add an element into queue is called **Enqueue** and the process of removal of an element from queue is called **Dequeue**.
+Here is the Python code:
 
-</div>
+```python
+class CircularQueue:
+    def __init__(self, k):
+        self.queue = [None] * k
+        self.size = k
+        self.front = self.rear = -1
+    
+    def enqueue(self, item):
+        if self.is_full():
+            return "Queue is full"
+        elif self.is_empty():
+            self.front = self.rear = 0
+        else:
+            self.rear = (self.rear + 1) % self.size
+        self.queue[self.rear] = item
+    
+    def dequeue(self):
+        if self.is_empty():
+            return "Queue is empty"
+        elif self.front == self.rear:
+            temp = self.queue[self.front]
+            self.front = self.rear = -1
+            return temp
+        else:
+            temp = self.queue[self.front]
+            self.front = (self.front + 1) % self.size
+            return temp
+    
+    def is_empty(self):
+        return self.front == -1
+    
+    def is_full(self):
+        return (self.rear + 1) % self.size == self.front
+```
 
-</div>
+### Priority Queue
 
-<div class="row my-2">
+A **Priority Queue** gives each item a priority. Items with higher priorities are dequeued before those with lower priorities. This is useful in scenarios like task scheduling where some tasks need to be processed before others.
 
-<div><span>Source: <span>www.cs.cmu.edu https://www.cs.cmu.edu/~adamchik/15-121/lectures/Stacks%20and%20Queues/Stacks%20and%20Queues.html "What is Queue? Interview Questions Source To Answer"</span></span>   </div>
+#### Visual Representation
 
-</div>
+![Priority Queue](https://firebasestorage.googleapis.com/v0/b/dev-stack-app.appspot.com/o/queues%2Fpriority-queue.svg?alt=media&token=df8214e1-9ba6-4aaf-9f79-bd5334a234af)
 
-</div>
+#### Implementation
 
-</div>
+Here is the Python code:
 
-</div>
+```python
+class PriorityQueue:
+    def __init__(self):
+        self.queue = []
+    
+    def enqueue(self, item, priority):
+        self.queue.append((item, priority))
+        self.queue.sort(key=lambda x: x[1], reverse=True)
+    
+    def dequeue(self):
+        if not self.is_empty():
+            return self.queue.pop(0)[0]
+    
+    def is_empty(self):
+        return len(self.queue) == 0
+```
 
-</div>
+### Double-Ended Queue (De-queue)
 
-<div data-v-5e9078c0="" class="unit">
+A **Double-Ended Queue** allows items to be added or removed from both ends, giving it **more flexibility** compared to a simple queue.
 
-<div>
+#### Visual Representation
 
-## 🔹 3\. What is Complexity Analysis of Queue operations?
+![De-queue](https://firebasestorage.googleapis.com/v0/b/dev-stack-app.appspot.com/o/queues%2Fdouble-ended.svg?alt=media&token=acca0731-3dd3-4af0-bbad-86739fb0506a)
 
-</div>
+#### Implementation
 
-<div>
+Here is the Python code:
 
-### Answer:
+```python
+from collections import deque
 
-<div class="answer">
+de_queue = deque()
+de_queue.append(1)  # Add to rear
+de_queue.appendleft(2)  # Add to front
+de_queue.pop()  # Remove from rear
+de_queue.popleft()  # Remove from front
+```
 
-<div>
+### Input-Restricted Deque and Output-Restricted Deque
 
-<div>
+An **Input-Restricted Deque** only allows items to be added at one end, while an **Output-Restricted Deque** limits removals to one end.
 
-<div class="AnswerBody">
+#### Visual Representation
 
-*   Queues offer random access to their contents by shifting the first element off the front of the queue. You have to do this repeatedly to access an arbitrary element somewhere in the queue. Therefore, **access** is `_O_(_n_)`.
-*   Searching for a given value in the queue requires iterating until you find it. So **search** is `_O_(_n_)`.
-*   Inserting into a queue, by definition, can only happen at the back of the queue, similar to someone getting in line for a delicious Double-Double burger at In 'n Out. Assuming an efficient queue implementation, queue **insertion** is `_O_(_1_)`.
-*   Deleting from a queue happens at the front of the queue. Assuming an efficient queue implementation, queue **deletion** is ``_O_(_1_)`.
+**Input-Restricted Deque**
 
-</div>
+![Input-Restricted Deque](https://firebasestorage.googleapis.com/v0/b/dev-stack-app.appspot.com/o/queues%2Fimput-restricted-deque.svg?alt=media&token=6ca0c591-ed53-40be-b410-3aea8fa519b0)
 
-</div>
+**Output-Restricted Deque**
 
-<div class="row my-2">
+![Output-Restricted Deque](https://firebasestorage.googleapis.com/v0/b/dev-stack-app.appspot.com/o/queues%2Foutput-restricted-deque.svg?alt=media&token=d304afbd-5ac3-47bb-b58e-759648c0761d)
 
-<div><span>Source: <span>github.com https://github.com/tim-hr/stuff/wiki/Time-complexity:-Queues "What is Complexity Analysis of Queue operations?  Interview Questions Source To Answer"</span></span>   </div>
+---
 
-</div>
+## 🔹 3. Name some _Queue Implementations_. Compare their efficiency.
 
-</div>
+### Answer
 
-</div>
+**Queues** can be built using various underlying structures, each with its trade-offs in efficiency and complexity.
 
-</div>
+### Naive Implementations
 
-</div>
+#### Simple Array
 
-<div data-v-5e9078c0="" class="unit">
+Using a simple array for implementation requires **shifting elements** when adding or removing from the front. This makes operations linear time $O(n)$, which is **inefficient** and not suitable for large queues or real-time use.
 
-<div>
+```python
+class ArrayQueue:
+    def __init__(self):
+        self.queue = []
 
-## 🔹 4\. What are some types of Queue?
+    def enqueue(self, item):
+        self.queue.append(item)
 
-</div>
+    def dequeue(self):
+        return self.queue.pop(0)
+```
 
-<div>
+#### Singly-linked List
 
-### Answer:
+Using a singly-linked list allows $O(1)$ `enqueue` with a tail pointer but still $O(n)$ `dequeue`.
 
-<div class="answer">
+```python
+class Node:
+    def __init__(self, data=None):
+        self.data = data
+        self.next = None
 
-<div>
+class LinkedListQueue:
+    def __init__(self):
+        self.head = None
+        self.tail = None
 
-<div>
+    def enqueue(self, item):
+        new_node = Node(item)
+        if self.tail:
+            self.tail.next = new_node
+        else:
+            self.head = new_node
+        self.tail = new_node
 
-<div class="AnswerBody">
+    def dequeue(self):
+        if self.head:
+            data = self.head.data
+            self.head = self.head.next
+            if not self.head:
+                self.tail = None
+            return data
+```
 
-Queue can be classified into following types:
+### Efficient Implementations
 
-*   **Simple Queue** - is a linear data structure in which removal of elements is done in the same order they were inserted i.e., the element will be removed first which is inserted first.
+#### Doubly Linked List
 
-*   **Circular Queue** - is a linear data structure in which the operations are performed based on FIFO (First In First Out) principle and the last position is connected back to the first position to make a circle. It is also called **Ring Buffer**. Circular queue avoids the wastage of space in a regular queue implementation using arrays.
+A doubly linked list enables $O(1)$ `enqueue` and `dequeue` by maintaining head and tail pointers, but it requires **prev node management**.
 
-*   **Priority Queue** - is a type of queue where each element has a priority value and the deletion of the elements is depended upon the priority value
+```python
+class DNode:
+    def __init__(self, data=None):
+        self.data = data
+        self.next = None
+        self.prev = None
 
-*   In case of **max-priority queue**, the element will be deleted first which has the largest priority value
-*   In case of **min-priority queue** the element will be deleted first which has the minimum priority value.
-*   **De-queue (Double ended queue)** - allows insertion and deletion from both the ends i.e. elements can be added or removed from rear as well as front end.
+class DoublyLinkedListQueue:
+    def __init__(self):
+        self.head = None
+        self.tail = None
 
-*   **Input restricted deque** - In input restricted double ended queue, the insertion operation is performed at only one end and deletion operation is performed at both the ends.
+    def enqueue(self, item):
+        new_node = DNode(item)
+        if not self.head:
+            self.head = new_node
+        else:
+            self.tail.next = new_node
+            new_node.prev = self.tail
+        self.tail = new_node
 
-*   **Output restricted deque** - In output restricted double ended queue, the deletion operation is performed at only one end and insertion operation is performed at both the ends.
+    def dequeue(self):
+        if self.head:
+            data = self.head.data
+            self.head = self.head.next
+            if self.head:
+                self.head.prev = None
+            else:
+                self.tail = None
+            return data
+```
 
-</div>
+#### Double-Ended Queue
 
-</div>
+The `collections.deque` in Python is essentially a double-ended queue implemented using a **doubly-linked list**, providing $O(1)$ complexities for operations at both ends.
 
-<div class="row my-2">
+```python
+from collections import deque
 
-<div><span>Source: <span>www.ques10.com https://www.ques10.com/p/34997/what-are-different-types-of-queues/ "What are some types of Queue? Interview Questions Source To Answer"</span></span>   </div>
+class DequeQueue:
+    def __init__(self):
+        self.queue = deque()
 
-</div>
+    def enqueue(self, item):
+        self.queue.append(item)
 
-</div>
+    def dequeue(self):
+        return self.queue.popleft()
+```
 
-</div>
+#### Binary Heap
 
-</div>
+A binary heap with its **binary tree structure** is optimized for **priority queues**, achieving $O(\log n)$ for both `enqueue` and `dequeue` operations. This makes it useful for situations where you need to process elements in a particular order.
 
-</div>
+```python
+import heapq
 
-<div data-v-5e9078c0="" class="unit">
+class MinHeapQueue:
+    def __init__(self):
+        self.heap = []
 
-<div>
+    def enqueue(self, item):
+        heapq.heappush(self.heap, item)
 
-## 🔹 5\. Why and when should I use Stack or Queue data structures instead of Arrays/Lists?
+    def dequeue(self):
+        return heapq.heappop(self.heap)
+```
 
-</div>
+---
 
-<div>
+## 🔹 4. How to manage _Full Circular Queue Event_?
 
-### Answer:
+### Answer
 
-<div class="answer">
+When a **Circular Queue** is full, you have to make a decision on how to handle new incoming items. This is known as the **Full Circular Queue Event**.
 
-<div>
+There are several strategies to manage this event:
 
-<div>
+### 1. Discard New Item
 
-<div class="AnswerBody">
+The simplest approach is to **discard** any new incoming item when the queue is full. Neither the **head** nor the **tail** pointers are updated.
 
-Because they help manage your data in more a _particular_ way than arrays and lists. It means that when you're debugging a problem, you won't have to wonder if someone randomly inserted an element into the middle of your list, messing up some invariants.
+#### Example: Server Request Handling
 
-Arrays and lists are random access. They are very flexible and also easily _corruptible_. If you want to manage your data as FIFO or LIFO it's best to use those, already implemented, collections.
+One real-life example where this strategy is employed is in server request handling. If a server is already at full capacity and unable to accommodate new incoming requests, it may choose to simply drop those requests.
 
-More practically you should:
+#### Code Example: Discarding Requests
 
-*   Use a queue when you want to get things out in the order that you put them in (FIFO)
-*   Use a stack when you want to get things out in the reverse order than you put them in (LIFO)
-*   Use a list when you want to get anything out, regardless of when you put them in (and when you don't want them to automatically be removed).
+Here is the Python code:
 
-</div>
+```python
+def enqueue(self, item):
+    if self.is_full():
+        print("Queue is full. Discarding new item.")
+    else:
+        # Normal enqueue operation
+        self.tail = (self.tail + 1) % self.size
+        self.queue[self.tail] = item
+```
 
-</div>
+### 2. Discard Oldest Item
 
-<div class="row my-2">
+Another strategy is to discard the oldest item in the queue to make room for the new one. Both the **head** and the **tail** pointers are moved one step forward.
 
-<div><span>Source: <span>stackoverflow.com https://stackoverflow.com/questions/2074970/stack-and-queue-why "Why and when should I use Stack or Queue data structures instead of Arrays/Lists? Interview Questions Source To Answer"</span></span>   </div>
+#### Example: Real-time Video Streaming
 
-</div>
+In real-time video applications, you might want to prioritize the latest frames. So, if the buffer is full, the oldest frame in the buffer can be discarded.
 
-</div>
+#### Code Example: Buffering Live Video
 
-</div>
+Here is the Python code:
 
-</div>
+```python
+def enqueue(self, item):
+    if self.is_full():
+        self.head = (self.head + 1) % self.size  # Move head pointer forward
+        self.tail = (self.tail + 1) % self.size  # Move tail pointer forward
+        self.queue[self.tail] = item
+    else:
+        # Normal enqueue operation
+        self.tail = (self.tail + 1) % self.size
+        self.queue[self.tail] = item
+```
 
-</div>
+### 3. Increase Queue Size Dynamically
 
-<div data-v-5e9078c0="" class="unit">
+You can also opt to increase the size of the queue dynamically to accommodate new items. This involves reallocating more memory for the underlying buffer.
 
-<div>
+#### Example: Dynamic Memory Allocation
 
-## 🔹 6\. Implement a Queue using two Stacks
+For certain applications where it is crucial to not lose any data, dynamically increasing the queue size can be a useful strategy.
 
-</div>
+#### Code Example: Dynamically Increasing The Queue Size
 
-<div>
+```python
+def enqueue(self, item):
+    if self.is_full():
+        self.size *= 2  # Double the size of the queue
+        new_queue = [None] * self.size
+        for i, val in enumerate(self.queue):
+            new_queue[i] = val
+        self.queue = new_queue
+        self.tail = (self.tail + 1) % self.size
+        self.queue[self.tail] = item
+    else:
+        # Normal enqueue operation
+        self.tail = (self.tail + 1) % self.size
+        self.queue[self.tail] = item
+```
 
-### Answer:
+---
+## 🔹 5. When should I use _Stack_ or _Queue_ data structures instead of _Arrays/Lists_?
 
-<div class="answer">
+### Answer
 
-<div>
+👉🏼 Check out all 9 answers here: [Devinterview.io - Queues](https://devinterview.io/data/queues-interview-questions)
 
-<div class="mb-2"><span class="h5">Problem</span></div>
+---
 
-<div>
+## 🔹 6. Name the _Most Efficient_ way to implement _Stack_ and _Queue_ together.
 
-<div class="AnswerBody">
+### Answer
 
-Suppose we have two stacks and no other temporary variable. Is to possible to "construct" a queue data structure using only the two stacks?
+👉🏼 Check out all 9 answers here: [Devinterview.io - Queues](https://devinterview.io/data/queues-interview-questions)
 
-</div>
+---
 
-</div>
+## 🔹 7. Implement a _Queue_ using _Two Stacks_.
 
-<div>
+### Answer
 
-<div class="AnswerBody">
+👉🏼 Check out all 9 answers here: [Devinterview.io - Queues](https://devinterview.io/data/queues-interview-questions)
 
-Keep two stacks, let's call them `inbox` and `outbox`.
+---
 
-**Enqueue**:
+## 🔹 8. Implement a _Queue_ using only _One Stack_.
 
-*   Push the new element onto `inbox`
+### Answer
 
-**Dequeue**:
+👉🏼 Check out all 9 answers here: [Devinterview.io - Queues](https://devinterview.io/data/queues-interview-questions)
 
-*   If `outbox` is empty, refill it by popping **each** element from `inbox` and pushing it onto `outbox`
-*   Pop and return the top element from `outbox`
+---
 
-</div>
+## 🔹 9. Implement _Stack_ using _Two Queues_ with efficient push.
 
-</div>
+### Answer
 
-<div>
+👉🏼 Check out all 9 answers here: [Devinterview.io - Queues](https://devinterview.io/data/queues-interview-questions)
 
-<div class="mb-2 mt-2"><span class="h5">Complexity Analysis</span></div>
+---
 
-<div class="hide-small">
-
-<div class="row no-gutters my-2 align-items-end">
-
-<div class="col font-weight-bold text-muted">Time:</div>
-
-<div class="col text-center">
-
-<div class="text-muted font-weight-bold justify-content-center">Constant</div>
-
-<div class="complexity amazing first p-1 justify-content-center shadow-text selected-complexity effect7">O(1)</div>
-
-</div>
-
-<div class="col disable text-center">
-
-<div class="text-muted font-weight-bold justify-content-center">Dbl. Logarithmic</div>
-
-<div class="complexity good p-1 justify-content-center shadow-text">O(log log n)</div>
-
-</div>
-
-<div class="col disable text-center">
-
-<div class="text-muted font-weight-bold justify-content-center">Logarithmic</div>
-
-<div class="complexity good p-1 justify-content-center shadow-text">O(log n)</div>
-
-</div>
-
-<div class="col disable text-center">
-
-<div class="font-weight-bold  text-muted justify-content-center">Square Root</div>
-
-<div class="complexity fair p-1 justify-content-center shadow-text ">O(√n)</div>
-
-</div>
-
-<div class="col disable text-center">
-
-<div class="font-weight-bold  text-muted justify-content-center">Linear</div>
-
-<div class="complexity fair p-1 justify-content-center shadow-text ">O(n)</div>
-
-</div>
-
-<div class="col disable text-center">
-
-<div class="font-weight-bold text-muted justify-content-center">Linearithmic</div>
-
-<div class="complexity bad p-1 justify-content-center shadow-text ">O(n log n)</div>
-
-</div>
-
-<div class="col disable text-center">
-
-<div class="font-weight-bold  text-muted justify-content-center">Quadratic</div>
-
-<div class="complexity terrible p-1 justify-content-center shadow-text ">_O_(_n_<sup>2</sup>)</div>
-
-</div>
-
-<div class="col disable text-center">
-
-<div class="font-weight-bold   text-muted justify-content-center">Exponential</div>
-
-<div class="complexity terrible p-1 justify-content-center shadow-text ">_O_(_2_<sup>n</sup>)</div>
-
-</div>
-
-<div class="col disable text-center">
-
-<div class="font-weight-bold text-muted">Factorial</div>
-
-<div class="complexity terrible last p-1 justify-content-center shadow-text ">O(n!)</div>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="hide-small">
-
-<div class="row no-gutters my-2 align-items-end">
-
-<div class="col font-weight-bold text-muted">Space:</div>
-
-<div class="col text-center">
-
-<div class="text-muted font-weight-bold justify-content-center">Constant</div>
-
-<div class="complexity amazing first p-1 justify-content-center shadow-text selected-complexity effect7">O(1)</div>
-
-</div>
-
-<div class="col disable text-center">
-
-<div class="text-muted font-weight-bold justify-content-center">Dbl. Logarithmic</div>
-
-<div class="complexity good p-1 justify-content-center shadow-text">O(log log n)</div>
-
-</div>
-
-<div class="col disable text-center">
-
-<div class="text-muted font-weight-bold justify-content-center">Logarithmic</div>
-
-<div class="complexity good p-1 justify-content-center shadow-text">O(log n)</div>
-
-</div>
-
-<div class="col disable text-center">
-
-<div class="font-weight-bold  text-muted justify-content-center">Square Root</div>
-
-<div class="complexity fair p-1 justify-content-center shadow-text ">O(√n)</div>
-
-</div>
-
-<div class="col disable text-center">
-
-<div class="font-weight-bold  text-muted justify-content-center">Linear</div>
-
-<div class="complexity fair p-1 justify-content-center shadow-text ">O(n)</div>
-
-</div>
-
-<div class="col disable text-center">
-
-<div class="font-weight-bold text-muted justify-content-center">Linearithmic</div>
-
-<div class="complexity bad p-1 justify-content-center shadow-text ">O(n log n)</div>
-
-</div>
-
-<div class="col disable text-center">
-
-<div class="font-weight-bold   text-muted justify-content-center">Quadratic</div>
-
-<div class="complexity terrible p-1 justify-content-center shadow-text ">_O_(_n_<sup>2</sup>)</div>
-
-</div>
-
-<div class="col disable text-center">
-
-<div class="font-weight-bold   text-muted justify-content-center">Exponential</div>
-
-<div class="complexity terrible p-1 justify-content-center shadow-text ">_O_(_2_<sup>n</sup>)</div>
-
-</div>
-
-<div class="col disable text-center">
-
-<div class="font-weight-bold text-muted">Factorial</div>
-
-<div class="complexity terrible last p-1 justify-content-center shadow-text ">O(n!)</div>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="hide-large">
-
-**Time:** <mark>O(1)</mark>
-
-**Space:** <mark>O(1)</mark>
-
-</div>
-
-<div class="mt-3">
-
-<div>
-
-<div class="AnswerBody">
-
-In the worst case scenario when outbox stack is empty, the algorithm pops n elements from inbox stack and pushes n elements to outbox, where n is the queue size. This gives `2*n` operations, which is `O(n)`. But when outbox stack is not empty the algorithm has `O(1)` time complexity that gives amortised `O(1)`.
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<div style="font-size: 14px;">
-
-<div class="mb-3 mt-2"><span class="h5">Implementation</span></div>
-
-<div>
-
-<nav class="mdc-tab-bar">
-
-<div class="mdc-tab-scroller">
-
-<div class="mdc-tab-scroller__scroll-area mdc-tab-scroller__scroll-area--scroll" style="margin-bottom: 0px;">
-
-<div class="mdc-tab-scroller__scroll-content"><button class="mdc-ripple-upgraded mdc-ripple-upgraded--background-focused mdc-tab mdc-tab--min-width mdc-tab--active" aria-selected="true" tabindex="0">
-
-<div class="mdc-tab__content"><span class="mdc-tab__text-label"><span>C#</span> <span class="shadow-text lang-badge cs">CS</span></span></div>
-
-<span class="mdc-tab-indicator mdc-tab-indicator--active"><span aria-hidden="true" class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span></span></button><button class="mdc-ripple-upgraded mdc-tab mdc-tab--min-width">
-
-<div class="mdc-tab__content"><span class="mdc-tab__text-label"><span>JavaScript</span> <span class="shadow-text lang-badge js">JS</span></span></div>
-
-<span class="mdc-tab-indicator"><span aria-hidden="true" class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span></span></button><button class="mdc-ripple-upgraded mdc-tab mdc-tab--min-width">
-
-<div class="mdc-tab__content"><span class="mdc-tab__text-label"><span>Java</span> <span class="shadow-text lang-badge java">Java</span></span></div>
-
-<span class="mdc-tab-indicator"><span aria-hidden="true" class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span></span></button><button class="mdc-ripple-upgraded mdc-tab mdc-tab--min-width">
-
-<div class="mdc-tab__content"><span class="mdc-tab__text-label"><span>Python</span> <span class="shadow-text lang-badge py">PY</span></span></div>
-
-<span class="mdc-tab-indicator"><span aria-hidden="true" class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span></span></button></div>
-
-</div>
-
-</div>
-
-</nav>
-
-</div>
-
-<div class="mt-2">
-
-<div class="AnswerBody">
-
-    public class Queue<T> where T : class
-    {
-        private Stack<T> input = new Stack<T>();
-        private Stack<T> output = new Stack<T>();
-
-        public void Enqueue(T t)
-        {
-            input.Push(t);
-        }
-
-        public T Dequeue()
-        {
-            if (output.Count == 0)
-            {
-                while (input.Count != 0)
-                {
-                    output.Push(input.Pop());
-                }
-            }
-
-            return output.Pop();
-        }
-    }
-
-</div>
-
-</div>
-
-</div>
-
-<div class="row my-2">
-
-<div><span>Source: <span>stackoverflow.com https://stackoverflow.com/questions/69192/how-to-implement-a-queue-using-two-stacks "Implement a Queue using two Stacks Interview Questions Source To Answer"</span></span>   </div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<div data-v-5e9078c0="" class="unit">
-
-<div>
-
-## 🔹 7\. Implement Stack using Two Queues (with efficient push)
-
-</div>
-
-<div>
-
-### Answer:
-
-<div class="answer">
-
-<div>
-
-<div class="mb-2"><span class="h5">Problem</span></div>
-
-<div>
-
-<div class="AnswerBody">
-
-Given two queues with their standard operations (`enqueue`, `dequeue`, `isempty`, `size`), implement a stack with its standard operations (`pop`, `push`, `isempty`, `size`). The stack should be efficient when pushing an item.
-
-</div>
-
-</div>
-
-<div>
-
-<div class="AnswerBody">
-
-Given we have `queue1` and `queue2`:
-
-**push** - `O(1)`:
-
-*   enqueue in `queue1`
-
-**pop** - `O(n)`:
-
-*   while size of `queue1` is bigger than 1, pipe (dequeue + enqueue) dequeued items from `queue1` into `queue2`
-*   dequeue and return the last item of `queue1`, then switch the names of `queue1` and `queue2`
-
-</div>
-
-</div>
-
-<div>
-
-<div class="mb-2 mt-2"><span class="h5">Complexity Analysis</span></div>
-
-<div class="hide-small">
-
-<div class="row no-gutters my-2 align-items-end">
-
-<div class="col font-weight-bold text-muted">Time:</div>
-
-<div class="col text-center">
-
-<div class="text-muted font-weight-bold justify-content-center">Constant</div>
-
-<div class="complexity amazing first p-1 justify-content-center shadow-text selected-complexity effect7">O(1)</div>
-
-</div>
-
-<div class="col disable text-center">
-
-<div class="text-muted font-weight-bold justify-content-center">Dbl. Logarithmic</div>
-
-<div class="complexity good p-1 justify-content-center shadow-text">O(log log n)</div>
-
-</div>
-
-<div class="col disable text-center">
-
-<div class="text-muted font-weight-bold justify-content-center">Logarithmic</div>
-
-<div class="complexity good p-1 justify-content-center shadow-text">O(log n)</div>
-
-</div>
-
-<div class="col disable text-center">
-
-<div class="font-weight-bold  text-muted justify-content-center">Square Root</div>
-
-<div class="complexity fair p-1 justify-content-center shadow-text ">O(√n)</div>
-
-</div>
-
-<div class="col disable text-center">
-
-<div class="font-weight-bold  text-muted justify-content-center">Linear</div>
-
-<div class="complexity fair p-1 justify-content-center shadow-text ">O(n)</div>
-
-</div>
-
-<div class="col disable text-center">
-
-<div class="font-weight-bold text-muted justify-content-center">Linearithmic</div>
-
-<div class="complexity bad p-1 justify-content-center shadow-text ">O(n log n)</div>
-
-</div>
-
-<div class="col disable text-center">
-
-<div class="font-weight-bold  text-muted justify-content-center">Quadratic</div>
-
-<div class="complexity terrible p-1 justify-content-center shadow-text ">_O_(_n_<sup>2</sup>)</div>
-
-</div>
-
-<div class="col disable text-center">
-
-<div class="font-weight-bold   text-muted justify-content-center">Exponential</div>
-
-<div class="complexity terrible p-1 justify-content-center shadow-text ">_O_(_2_<sup>n</sup>)</div>
-
-</div>
-
-<div class="col disable text-center">
-
-<div class="font-weight-bold text-muted">Factorial</div>
-
-<div class="complexity terrible last p-1 justify-content-center shadow-text ">O(n!)</div>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="hide-small">
-
-<div class="row no-gutters my-2 align-items-end">
-
-<div class="col font-weight-bold text-muted">Space:</div>
-
-<div class="col text-center">
-
-<div class="text-muted font-weight-bold justify-content-center">Constant</div>
-
-<div class="complexity amazing first p-1 justify-content-center shadow-text selected-complexity effect7">O(1)</div>
-
-</div>
-
-<div class="col disable text-center">
-
-<div class="text-muted font-weight-bold justify-content-center">Dbl. Logarithmic</div>
-
-<div class="complexity good p-1 justify-content-center shadow-text">O(log log n)</div>
-
-</div>
-
-<div class="col disable text-center">
-
-<div class="text-muted font-weight-bold justify-content-center">Logarithmic</div>
-
-<div class="complexity good p-1 justify-content-center shadow-text">O(log n)</div>
-
-</div>
-
-<div class="col disable text-center">
-
-<div class="font-weight-bold  text-muted justify-content-center">Square Root</div>
-
-<div class="complexity fair p-1 justify-content-center shadow-text ">O(√n)</div>
-
-</div>
-
-<div class="col disable text-center">
-
-<div class="font-weight-bold  text-muted justify-content-center">Linear</div>
-
-<div class="complexity fair p-1 justify-content-center shadow-text ">O(n)</div>
-
-</div>
-
-<div class="col disable text-center">
-
-<div class="font-weight-bold text-muted justify-content-center">Linearithmic</div>
-
-<div class="complexity bad p-1 justify-content-center shadow-text ">O(n log n)</div>
-
-</div>
-
-<div class="col disable text-center">
-
-<div class="font-weight-bold   text-muted justify-content-center">Quadratic</div>
-
-<div class="complexity terrible p-1 justify-content-center shadow-text ">_O_(_n_<sup>2</sup>)</div>
-
-</div>
-
-<div class="col disable text-center">
-
-<div class="font-weight-bold   text-muted justify-content-center">Exponential</div>
-
-<div class="complexity terrible p-1 justify-content-center shadow-text ">_O_(_2_<sup>n</sup>)</div>
-
-</div>
-
-<div class="col disable text-center">
-
-<div class="font-weight-bold text-muted">Factorial</div>
-
-<div class="complexity terrible last p-1 justify-content-center shadow-text ">O(n!)</div>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="hide-large">
-
-**Time:** <mark>O(1)</mark>
-
-**Space:** <mark>O(1)</mark>
-
-</div>
-
-<div class="mt-3">
-
-<div>
-
-<div class="AnswerBody">
-
-If queue is implemented as _linked list_ the `enqueue` operation has `O(1)` time complexity.
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<div style="font-size: 14px;">
-
-<div class="mb-3 mt-2"><span class="h5">Implementation</span></div>
-
-<div>
-
-<nav class="mdc-tab-bar">
-
-<div class="mdc-tab-scroller">
-
-<div class="mdc-tab-scroller__scroll-area mdc-tab-scroller__scroll-area--scroll" style="margin-bottom: 0px;">
-
-<div class="mdc-tab-scroller__scroll-content"><button class="mdc-ripple-upgraded mdc-ripple-upgraded--background-focused mdc-tab mdc-tab--min-width mdc-tab--active" aria-selected="true" tabindex="0">
-
-<div class="mdc-tab__content"><span class="mdc-tab__text-label"><span>Java</span> <span class="shadow-text lang-badge java">Java</span></span></div>
-
-<span class="mdc-tab-indicator mdc-tab-indicator--active"><span aria-hidden="true" class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span></span></button></div>
-
-</div>
-
-</div>
-
-</nav>
-
-</div>
-
-<div class="mt-2">
-
-<div class="AnswerBody">
-
-    public Stack<E> {
-        private Queue<E> q1 = new Queue<E>();
-        private Queue<E> q2 = new Queue<E>();
-
-        public void push(E x) {
-            q1.enqueue(x);
-        }
-
-        public E pop() {
-            while (q1.size() > 1) {
-                q2.enqueue(q1.dequeue());
-            }
-            E pop = q1.dequeue();
-            Queue<E> temp = q1;
-            q1 = q2;
-            q2 = temp;
-            return pop;
-        }
-    }
-
-</div>
-
-</div>
-
-</div>
-
-<div class="row my-2">
-
-<div><span>Source: <span>stackoverflow.com https://stackoverflow.com/questions/688276/implement-stack-using-two-queues "Implement Stack using Two Queues (with efficient `push`) Interview Questions Source To Answer"</span></span>   </div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<div data-v-5e9078c0="" class="unit">
-
-<div>
-
-## 🔹 8\. Name some Queue implementations and compare them by efficiency of operations
-
-</div>
-
-<div>👉🏼 Check all 14 answers https://devinterview.io/data/queues-interview-questions </div>
-
-</div>
-
-<div data-v-5e9078c0="" class="unit">
-
-<div>
-
-## 🔹 9\. What are benefits of Circular Queue?
-
-</div>
-
-<div>👉🏼 Check all 14 answers https://devinterview.io/data/queues-interview-questions </div>
-
-</div>
-
-<div data-v-5e9078c0="" class="unit">
-
-<div>
-
-## 🔹 10\. Compare Array-Based vs List-Based implementation of Queues
-
-</div>
-
-<div>👉🏼 Check all 14 answers https://devinterview.io/data/queues-interview-questions </div>
-
-</div>
-
-<div data-v-5e9078c0="" class="unit">
-
-<div>
-
-## 🔹 11\. How to manage Full Circular Queue event?
-
-</div>
-
-<div>👉🏼 Check all 14 answers https://devinterview.io/data/queues-interview-questions </div>
-
-</div>
-
-<div data-v-5e9078c0="" class="unit">
-
-<div>
-
-## 🔹 12\. Name most efficient way to implement Stack and Queue together?
-
-</div>
-
-<div>👉🏼 Check all 14 answers https://devinterview.io/data/queues-interview-questions </div>
-
-</div>
-
-<div data-v-5e9078c0="" class="unit">
-
-<div>
-
-## 🔹 13\. How do I convert a Queue into the Stack?
-
-</div>
-
-<div>👉🏼 Check all 14 answers https://devinterview.io/data/queues-interview-questions </div>
-
-</div>
-
-<div data-v-5e9078c0="" class="unit">
-
-<div>
-
-## 🔹 14\. How implement a Queue using only One (1) Stack?
-
-</div>
-
-<div>👉🏼 Check all 14 answers https://devinterview.io/data/queues-interview-questions </div>
-
-</div>
-
-Thanks 🙌 for reading and good luck on your next tech interview!  
-Explore 3800+ dev interview question here 👉 [Devinterview.io https://devinterview.io/)</div>
