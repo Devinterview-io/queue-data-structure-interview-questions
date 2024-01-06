@@ -1,14 +1,17 @@
-# ⚫ Queues in Tech Interviews 2024: Top 9 Questions & Answers
+# 55 Fundamental Queue Data Structure Interview Questions
 
-![Queues Decorative Image](https://firebasestorage.googleapis.com/v0/b/dev-stack-app.appspot.com/o/blogImg%2Fqueues.png?alt=media&token=597d573d-f34c-46c1-80af-eaf48688f1ac&_gl=1*18tzwlp*_ga*OTYzMjY5NTkwLjE2ODg4NDM4Njg.*_ga_CW55HF8NVT*MTY5ODYwNTk1NS4xOTAuMS4xNjk4NjA3MTAxLjExLjAuMA..)
+<div>
+<p align="center">
+<a href="https://devinterview.io/questions/data-structures-and-algorithms/">
+<img src="https://firebasestorage.googleapis.com/v0/b/dev-stack-app.appspot.com/o/github-blog-img%2Fdata-structures-and-algorithms-github-img.jpg?alt=media&token=fa19cf0c-ed41-4954-ae0d-d4533b071bc6" alt="data-structures-and-algorithms" width="100%">
+</a>
+</p>
 
-👉🏼 You can also find all answers here: [Devinterview.io - Queues](https://devinterview.io/data/queues-interview-questions)
+#### You can also find all 55 answers here 👉 [Devinterview.io - Queue Data Structure](https://devinterview.io/questions/data-structures-and-algorithms/queue-data-structure-interview-questions)
 
----
+<br>
 
-## 🔹 1. What is a _Queue_?
-
-### Answer
+## 1. What is a _Queue_?
 
 A **queue** is a data structure that adheres to the **First-In-First-Out (FIFO)** principle and is designed to hold a collection of elements.
 
@@ -95,12 +98,28 @@ print("Rear:", q.rear())
 q.dequeue()
 print("After dequeue:", list(q.queue))
 ```
+<br>
 
----
+## 2. Explain the _FIFO (First In, First Out)_ policy that characterizes a _Queue_.
 
-## 🔹 2. Name some _Types of Queue_.
+The **FIFO (First-In-First-Out)** policy governs the way **Queues** handle their elements. Elements are processed and removed from the queue in the same order in which they were added. The data structures responsible for adhering to this policy are specifically designed to optimize for this principle, making them ideal for a host of real-world applications.
 
-### Answer
+### Core Mechanism
+
+Elements are typically added to the **rear** and removed from the **front**. This design choice ensures that the earliest elements, those closest to the front, are processed and eliminated first.
+
+### Fundamental Operations
+
+1. **Enqueue (Add)**: New elements are positioned at the rear end.
+2. **Dequeue (Remove)**: Front element is removed from the queue.
+
+In the above diagram:
+
+- **Front**: Pointing to the element about to be dequeued.
+- **Rear**: Position where new elements will be enqueued.
+<br>
+
+## 3. Name some _Types of Queues_.
 
 **Queues** are adaptable data structures with diverse types, each optimized for specific tasks. Let's explore the different forms of queues and their functionalities.
 
@@ -246,12 +265,525 @@ An **Input-Restricted Deque** only allows items to be added at one end, while an
 **Output-Restricted Deque**
 
 ![Output-Restricted Deque](https://firebasestorage.googleapis.com/v0/b/dev-stack-app.appspot.com/o/queues%2Foutput-restricted-deque.svg?alt=media&token=d304afbd-5ac3-47bb-b58e-759648c0761d)
+<br>
 
----
+## 4. What is a _Priority Queue_ and how does it differ from a standard _Queue_?
 
-## 🔹 3. Name some _Queue Implementations_. Compare their efficiency.
+**Queues** are data structures that follow a **FIFO** (First-In, First-Out) order, where elements are removed in the same sequence they were added.
 
-### Answer
+**Priority Queues**, on the other hand, are more dynamic and cater to elements with **varying priorities**. A key distinction is that while queues prioritize the order in which items are processed, a priority queue dictates the sequence based on the priority assigned to each element.
+
+### Core Differences
+
+- **Order:** Queues ensure a consistent, predefined processing sequence, whereas priority queues handle items based on their assigned priority levels.
+  
+- **Elements Removal:** Queues remove the oldest element, while priority queues remove the highest-priority item. This results in a different set of elements being dequeued in each case.
+
+- **Queues**: 1, 2, 3, 4, 5
+- **Priority Queue**: (assuming '4' has the highest priority): 4, 2, 6, 3, 1
+
+- **Support Functions**: Since queues rely on a standard FIFO flow, they present standard methods like `enqueue` and `dequeue`. In contrast, priority queues offer means to set priorities and locate/query elements based on their priority levels.
+
+### Implementation Methods
+
+#### Array List
+   - **Queues**: Direct support.
+   - **Priority Queues**: Manage elements to sustain a specific order.
+
+#### Linked List
+   - **Queues**: Convenient for dynamic sizing and additions.
+   - **Priority Queues**: Manual management of element ordering.
+
+#### Binary Trees
+   - **Queues**: Not common but a viable approach using structures like Heaps.
+
+   - **Priority Queues**: Specifically utilized for priority queues to ensure efficient operations based on priorities.
+
+4. **Hash Tables**
+   - **Queues**: Suitable for more sophisticated, fine-tuned queues.
+   - **Priority Queues**: Can be combined with other structures for varied implementations.
+
+### Typical Use-Cases
+
+- **Queues**: Appropriate for scenarios where "**first come, first serve**" is fundamental, such as in printing tasks or handling multiple requests.
+- **Priority Queues**: More Suitable for contexts that require managing and completing tasks in an "**order of urgency**" or "**order of importance**", like in real-time systems, traffic routing, or resource allocation.
+<br>
+
+## 5. When should I use a _Stack_ or a _Queue_ instead of _Arrays/Lists_?
+
+**Queues** and **Stacks** provide structured ways to handle data, offering distinct advantages over more generic structures like **Lists** or **Arrays**.
+
+### Key Features
+
+#### Queues 
+
+- **Characteristic**: First-In-First-Out (FIFO)
+- **Usage**: Ideal for ordered processing, such as print queues or BFS traversal.
+
+#### Stacks
+
+- **Characteristic**: Last-In-First-Out (LIFO)
+- **Usage**: Perfect for tasks requiring reverse order like undo actions or DFS traversal.
+
+#### Lists/Arrays
+
+- **Characteristic**: Random Access
+- **Usage**: Suitable when you need random access to elements or don't require strict order or data management.
+<br>
+
+## 6. How do you reverse a _Queue_?
+
+Reversing a queue can be accomplished **using a single stack** or **recursively**. Both methods ensure the first element in the input queue becomes the last in the resultant queue. 
+
+### Single-Stack Method
+
+Here are the steps:
+
+1. **Transfer Input to Stack**: While the input queue isn't empty, **dequeue** elements and **push** them to the stack.
+2. **Transfer Stack to Output**: Then, **pop** elements from the stack and **enqueue** them back to the queue. This reverses their order.
+
+### Code Example: Reversing a Queue with a Stack
+
+Here is the Python code:
+
+```python
+def reverse_queue(q):
+    if not q:  # Base case: queue is empty
+        return
+    stack = []
+    while q:
+        stack.append(q.pop(0))  # Transfer queue to stack
+    while stack:
+        q.append(stack.pop())  # Transfer stack back to queue
+    return q
+
+# Test
+q = [1, 2, 3, 4, 5]
+print(f"Original queue: {q}")
+reverse_queue(q)
+print(f"Reversed queue: {q}")
+```
+
+### Complexity Analysis
+
+- **Time Complexity**: $O(n)$ as it involves one pass through both the queue and the stack for a queue of size $n$.
+- **Space Complexity**: $O(n)$ - $n$ space is used to store the elements in the stack.
+
+### Using Recursion 
+
+To reverse a queue **recursively**, you can follow this approach:
+
+1. **Base Case**: If the queue is empty, stop.
+2. **Recurse**: Call the reverse function recursively until all elements are dequeued.
+3. **Enqueue Last Element**: For each item being dequeued, enqueue it back into the queue after the recursion bottoms out, effectively reversing the order.
+
+### Code Example: Reversing a Queue Recursively
+
+Here is the Python code:
+
+```python
+def reverse_queue_recursively(q):
+    if not q:
+        return
+    front = q.pop(0)  # Dequeue the first element
+    reverse_queue_recursively(q)  # Recurse for the remaining queue
+    q.append(front)  # Enqueue the previously dequeued element at the end
+    return q
+
+# Test
+q = [1, 2, 3, 4, 5]
+print(f"Original queue: {q}")
+reverse_queue_recursively(q)
+print(f"Reversed queue: {q}")
+```
+
+### Complexity Analysis
+
+- **Time Complexity**: $O(n^2)$ - this is because each dequeue operation on the queue in the recursion stack is an $O(n)$ operation, and these operations occur in sequence for a queue of size $n$. Therefore, we get $n + (n-1) + \ldots + 1 = \frac{n(n+1)}{2}$ in the worst case. While this can technically be represented as $O(n^2)$, in practical scenarios for small queues, it can have a time complexity of $O(n)$.
+- **Space Complexity**: $O(n)$ - $n$ depth comes from the recursion stack for a queue of $n$ elements
+<br>
+
+## 7. Can a queue be implemented as a static data structure and if so, what are the limitations?
+
+**Static queues** use a pre-defined amount of memory, typically an array, for efficient FIFO data handling.
+
+### Limitations of Static Queues
+
+1. **Fixed Capacity**: A static queue cannot dynamically adjust its size based on data volume or system requirements. As a result, it can become either underutilized or incapable of accommodating additional items.
+
+2. **Memory Fragmentation**: If there's not enough contiguous memory to support queue expansion or changes, memory fragmentation occurs. This means that even if there's available memory in the system, it may not be usable by the static queue.
+
+    Memory fragmentation is more likely in long-running systems or when the queue has a high rate of enqueueing and dequeueing due to the "moving window" of occupied and freed space.
+
+3. **Potential for Data Loss**: Enqueuing an item into a full static queue results in data loss. As there's no mechanism to signify that storage was exhausted, it's essential to maintain  methods to keep track of the queue's status.
+
+4. **Time-Consuming Expansion**: If the queue were to support expansion, it would require operations in $O(n)$ time - linear with the current size of the queue. This computational complexity is a significant downside compared to the $O(1)$ time complexity offered by dynamic queues.
+
+5. **Inefficient Memory Usage**: A static queue reserved a set amount of memory for its potential max size, which can be a wasteful use of resources if the queue seldom reaches that max size.
+<br>
+
+## 8. Write an algorithm to _enqueue_ and _dequeue_ an item from a _Queue_.
+
+### Problem Statement
+
+The task is to write an algorithm to perform both **enqueue** (add an item) and **dequeue** (remove an item) operations on a **queue**.
+
+### Solution
+
+A Queue, often used in real-world scenarios with first-in, first-out (FIFO) logic, can be implemented using an array (for fixed-size) or linked list (for dynamic size).
+
+#### Algorithm Steps
+
+1. **Enqueue Operation**: Add an item at the `rear` of the queue.
+2. **Dequeue Operation**: Remove the item at the `front` of the queue.
+
+#### Implementation
+
+Here is the Python code:
+
+```python
+class Queue:
+    def __init__(self):
+        self.items = []
+
+    def enqueue(self, item):
+        self.items.append(item)
+        
+    def dequeue(self):
+        if not self.is_empty():
+            return self.items.pop(0)
+        return "Queue is empty"
+
+    def is_empty(self):
+        return self.items == []
+
+    def size(self):
+        return len(self.items)
+
+# Example
+q = Queue()
+q.enqueue(2)
+q.enqueue(4)
+q.enqueue(6)
+print("Dequeued:", q.dequeue())  # Output: Dequeued: 2
+```
+
+In this Python implementation, the `enqueue` operation has a time complexity of $O(1)$ while the `dequeue` operation has a time complexity of $O(n)$.
+<br>
+
+## 9. How to implement a _Queue_ such that _enqueue_ has _O(1)_ and _dequeue_ has _O(n)_ complexity?
+
+One way to achieve **$O(1)$** enqueue and **$O(n)$** dequeue times is with a **linked-list**. You can keep the tail pointer always. Enqueues don't need to perform more than a couple of cheap link operations.
+
+However, dequeue operations on a single-ended list are costly, potentially traversing the whole list. To keep dequeue times acceptable, you might want to limit the number of elements you enqueue before you're allowed to dequeue elements.  You could define a fixed size for the list e.g. 100 or 1000, and after this limit, you would allow dequeueing. The key is to ensure the amortized time for the last operation is still $O(1)$ this way.
+
+### Python Example
+
+Here is a Python code:
+
+```python
+class Node:
+    def __init__(self, data=None):
+        self.data = data
+        self.next = None
+
+class LimitedQueue:
+    def __init__(self, max_size):
+        self.head = None
+        self.tail = None
+        self.max_size = max_size
+        self.count = 0
+
+    def enqueue(self, data):
+        if self.count < self.max_size:
+            new_node = Node(data)
+            if not self.head:
+                self.head = new_node
+            else:
+                self.tail.next = new_node
+            self.tail = new_node
+            self.count += 1
+        else:
+            print("Queue is full. Dequeue before adding more.")
+
+    def dequeue(self):
+        if self.head:
+            data = self.head.data
+            self.head = self.head.next
+            self.count -= 1
+            if self.count == 0:
+                self.tail = None
+            return data
+        else:
+            print("Queue is empty. Nothing to dequeue.")
+
+    def display(self):
+        current = self.head
+        while current:
+            print(current.data, end=" ")
+            current = current.next
+        print()
+
+# Let's test the Queue
+limited_queue = LimitedQueue(3)
+limited_queue.enqueue(10)
+limited_queue.enqueue(20)
+limited_queue.enqueue(30)
+limited_queue.display()  # Should display 10 20 30
+limited_queue.enqueue(40)  # Should display 'Queue is full. Dequeue before adding more.'
+limited_queue.dequeue()
+limited_queue.display()  # Should display 20 30
+```
+<br>
+
+## 10. Discuss a scenario where _dequeue_ must be prioritized over _enqueue_ in terms of complexity.
+
+While **enqueue** typically takes $O(1)$ time and **dequeue** $O(1)$ or $O(n)$ time in a simple Queue, there are cases, like in **stacks**, where we prioritize one operation over the other.
+
+In most traditional Queue implementations, **enqueue and dequeue** operate in $O(1)$ time. 
+
+However, you can design special queues, like **priority queues**, where one operation is optimized at the cost of the other. For instance, if you're using a **binary heap**.
+
+### Binary Heap & Deque Efficiency
+
+The efficiency of both **enqueue** and **dequeue** is constrained by the binary heap's structure. A binary heap can be represented as a binary tree.
+
+In a **complete** binary tree, most levels are fully occupied, and the last level is either partially or fully occupied from the left.
+
+When the binary heap is visualized with the root at the top, the following rules are typically followed:
+
+- **Maximum Number of Children**: All nodes, except the ones at the last level, have exactly two children.
+- **Possible Lopsided Structure in the Last Level**: The last level, if not fully occupied from the left, can have a right-leaning configuration of nodes.
+
+Suppose we represent such a binary heap using an array starting from index $1$. In that case, the children of a node at index $i$ can be located at indices $2i$ and $2i+1$ respectively.
+
+Thus, both **enqueue** and **dequeue** rely on traversing the binary heap in a systematic manner. The following efficiencies are characteristic:
+
+#### Enqueue Efficiency: $O(\log n)$
+
+When **enqueue** is executed:
+
+- The highest efficiency achievable is $O(1)$ when the new element replaces the root, and the heap happens to be a min or max heap.
+- The efficiency can degrade up to $O(\log n)$ in the worst-case scenario. This occurs when the new child percolates to the root in $O(\log n)$ steps after comparing and potentially swapping with its ancestors.
+
+#### Dequeue Efficiency: $O(1)$ - $O(\log n)$
+
+When **dequeue** is executed:
+
+- The operation's efficiency spans from $O(1)$ when the root is instantly removed to $O(\log n)$ when the replacement node needs to 'bubble down' to its proper position.
+<br>
+
+## 11. Explain how you can efficiently track the _Minimum_ or _Maximum_ element in a _Queue_.
+
+Using a **singly linked list as a queue** provides $O(1)$ time complexity for standard queue operations, but finding exact minimum and maximum can be $O(n)$. However, there are optimized methods for improving efficiency.
+
+### Optimal Methods
+
+1. **Element Popularity Counter**: Keep track of the number of times an element appears, so you can easily determine changes to the minimum and maximum when elements are added or removed.
+2. **Auxiliary Data Structure**: Alongside the queue, maintain a secondary data structure, such as a tree or stack, that helps identify the current minimum and maximum elements efficiently.
+
+### Code Example: Naive Queue
+
+Here is the Python code:
+
+```python
+class NaiveQueue:
+    def __init__(self):
+        self.queue = []
+    
+    def push(self, item):
+        self.queue.append(item)
+        
+    def pop(self):
+        return self.queue.pop(0)
+    
+    def min(self):
+        return min(self.queue)
+    
+    def max(self):
+        return max(self.queue)
+```
+This code has $O(n)$ time complexity for both `min` and `max` methods.
+
+
+### Code Example: Element Popularity Counter
+
+Here is the Python code:
+
+```python
+from collections import Counter
+
+class EfficientQueue:
+    def __init__(self):
+        self.queue = []
+        self.element_count = Counter()
+        self.minimum = float('inf')
+        self.maximum = float('-inf')
+    
+    def push(self, item):
+        self.queue.append(item)
+        self.element_count[item] += 1
+        self.update_min_max(item)
+        
+    def pop(self):
+        item = self.queue.pop(0)
+        self.element_count[item] -= 1
+        if self.element_count[item] == 0:
+            del self.element_count[item]
+            if item == self.minimum:
+                self.minimum = min(self.element_count.elements(), default=float('inf'))
+            if item == self.maximum:
+                self.maximum = max(self.element_count.elements(), default=float('-inf'))
+        return item
+    
+    def min(self):
+        return self.minimum
+    
+    def max(self):
+        return self.maximum
+    
+    def update_min_max(self, item):
+        self.minimum = min(self.minimum, item)
+        self.maximum = max(self.maximum, item)
+```
+
+This code has $O(1)$ time complexity for both `min` and `max` methods.
+
+
+### Code Example: Dual Data Structure Queue
+
+Here is the Python code:
+
+```python
+from queue import Queue
+from collections import deque
+
+class DualDataQueue:
+    def __init__(self):
+        self.queue = Queue()  # For standard queue operations
+        self.max_queue = deque()  # To keep track of current maximum
+        
+    def push(self, item):
+        self.queue.put(item)
+        while len(self.max_queue) > 0 and self.max_queue[-1] < item:
+            self.max_queue.pop()
+        self.max_queue.append(item)
+        
+    def pop(self):
+        item = self.queue.get()
+        if item == self.max_queue[0]:
+            self.max_queue.popleft()
+        return item
+    
+    def max(self):
+        return self.max_queue[0]
+```
+
+This code has $O(1)$ time complexity for `max` method and $O(1)$ time complexity for `min` method using the symmetric approach.
+<br>
+
+## 12. Discuss an algorithm to merge two or more _Queues_ into one with efficient _Dequeuing_.
+
+**Merging multiple queues** is conceptually similar to merging two lists. However, direct merging challenges efficiency as it enforces a $\mathcal{O}(n)$ operation for each item in the queues. Utilizing a secondary queue $\text{auxQueue}$ can provide a more efficient $\mathcal{O}(n + m)$ sequence.
+
+### Algorithm: Queue Merging
+
+1. **Enqueue into Aux**: Until all input queues are empty, **enqueue** from the oldest non-empty queue to $\text{auxQueue}$.
+2. **Move Everything Back**: For each item already in $\text{auxQueue}$, **dequeue** and **enqueue** back to the determined queue.
+3. **Return $\text{auxQueue}$**: As all input queues are empty, $\text{auxQueue}$ now contains all the original elements.
+
+### Complexity Analysis
+
+- **Time Complexity**: The algorithm runs in $\mathcal{O}(n + m)$ where $n$ and $m$ represent the sizes of the input queues.
+- **Space Complexity**: The algorithm uses $\mathcal{O}(1)$ auxiliary space.
+
+### Code Example: Queue Merging
+
+Here is the Python code:
+
+```python
+from queue import Queue
+
+def merge_queues(q_list):
+    auxQueue = Queue()
+    
+    # Step 1: Enqueue into Aux
+    for q in q_list:
+        while not q.empty():
+            auxQueue.put(q.get())
+    
+    # Step 2: Move Everything Back
+    for _ in range(auxQueue.qsize()):
+        q.put(auxQueue.get())
+    
+    # Step 3: Return auxQueue
+    return q
+```
+
+### Code Example: Testing Queue Merging
+
+Here is the Python code with the test:
+
+```python
+# Creating queues
+q1 = Queue()
+q2 = Queue()
+
+# Enqueueing elements
+for i in range(5):
+    q1.put(i)
+
+for i in range(5, 10):
+    q2.put(i)
+
+# Merging
+merged = merge_queues([q1, q2])
+
+# Dequeuing and printing
+while not merged.empty():
+    print(merged.get())
+```
+
+### Code Example: Multi-Queue Merging
+
+Here is the Python code if we merge it into single queue:
+
+```python
+def merge_queue_multi(q_list):
+    merged = Queue()
+    
+    # Merging the queues
+    for q in q_list:
+        while not q.empty():
+            merged.put(q.get())
+    
+    return merged
+```
+
+### Time Complexity of Limitation
+
+The time complexity of this algorithm is **not as optimal** as the enqueuing to the auxiliary queue makes each item traverse more than once, increasing control time when an element is being dequeued.
+
+For even activity, all enqueuing actions are executed approximately the same number of times, so there's still a linear-time bound.
+
+#### Code Example: Multi-Queue Merging with Dequeuing Control
+
+Here is the Python code:
+
+```python
+def merge_queues_on_visit_multi(q_list):
+    def on_visit(visit_cb):
+        for q in q_list:
+            while not q.empty():
+                visit_cb(q.get())
+    
+    merged = Queue()
+    on_visit(merged.put)
+    return merged
+```
+<br>
+
+## 13. Name some _Queue Implementations_. Compare their efficiency.
 
 **Queues** can be built using various underlying structures, each with its trade-offs in efficiency and complexity.
 
@@ -378,127 +910,86 @@ class MinHeapQueue:
     def dequeue(self):
         return heapq.heappop(self.heap)
 ```
+<br>
 
----
+## 14. Describe an array-based implementation of a _Queue_ and its disadvantages.
 
-## 🔹 4. How to manage _Full Circular Queue Event_?
+While **array-based Queues** are simple, they have inherent limitations.
 
-### Answer
+### Key Features
 
-When a **Circular Queue** is full, you have to make a decision on how to handle new incoming items. This is known as the **Full Circular Queue Event**.
+- **Structure**: Uses an array to simulate a queue's First-In-First-Out (FIFO) behavior.
+- **Pointers**: Utilizes a front and rear pointer/index.
 
-There are several strategies to manage this event:
-
-### 1. Discard New Item
-
-The simplest approach is to **discard** any new incoming item when the queue is full. Neither the **head** nor the **tail** pointers are updated.
-
-#### Example: Server Request Handling
-
-One real-life example where this strategy is employed is in server request handling. If a server is already at full capacity and unable to accommodate new incoming requests, it may choose to simply drop those requests.
-
-#### Code Example: Discarding Requests
+### Code Example: Simple Queue Operations
 
 Here is the Python code:
 
 ```python
-def enqueue(self, item):
-    if self.is_full():
-        print("Queue is full. Discarding new item.")
-    else:
-        # Normal enqueue operation
-        self.tail = (self.tail + 1) % self.size
-        self.queue[self.tail] = item
+class ArrayQueue:
+    def __init__(self, size):
+        self.size = size
+        self.queue = [None] * size
+        self.front = self.rear = -1
+
+    def is_full(self):
+        return self.rear == self.size - 1
+
+    def is_empty(self):
+        return self.front == -1 or self.front > self.rear
+
+    def enqueue(self, element):
+        if self.is_full():
+            print("Queue is full")
+            return
+        if self.front == -1:
+            self.front = 0
+        self.rear += 1
+        self.queue[self.rear] = element
+
+    def dequeue(self):
+        if self.is_empty():
+            print("Queue is empty")
+            return
+        item = self.queue[self.front]
+        self.front += 1
+        if self.front > self.rear:
+            self.front = self.rear = -1
+        return item
 ```
 
-### 2. Discard Oldest Item
+### Disadvantages
 
-Another strategy is to discard the oldest item in the queue to make room for the new one. Both the **head** and the **tail** pointers are moved one step forward.
+- **Fixed Size**: Array size is predetermined, leading to potential memory waste or overflow.
+- **Element Frontshift**: Deletions necessitate front-shifting, creating an $O(n)$ time cost.
+- **Unequal Time Complexities**: Operations like `enqueue` and `dequeue` can be $O(1)$ or $O(n)$, making computation times less predictable.
+<br>
 
-#### Example: Real-time Video Streaming
+## 15. What are the benefits of implementing a _Queue_ with a _Doubly Linked List_ versus a _Singly Linked List_?
 
-In real-time video applications, you might want to prioritize the latest frames. So, if the buffer is full, the oldest frame in the buffer can be discarded.
+Let's compare the benefits of implementing a **Queue** using both a **Doubly Linked List** and **Singly Linked List**.
 
-#### Code Example: Buffering Live Video
+### Key Advantages
 
-Here is the Python code:
+#### Singly Linked List Queue
 
-```python
-def enqueue(self, item):
-    if self.is_full():
-        self.head = (self.head + 1) % self.size  # Move head pointer forward
-        self.tail = (self.tail + 1) % self.size  # Move tail pointer forward
-        self.queue[self.tail] = item
-    else:
-        # Normal enqueue operation
-        self.tail = (self.tail + 1) % self.size
-        self.queue[self.tail] = item
-```
+- **Simplicity**: The implementation is straightforward and may require fewer lines of code.
+- **Memory Efficiency**: Nodes need to store only a single reference to the next node, which can save memory.
 
-### 3. Increase Queue Size Dynamically
+#### Doubly Linked List Queue
 
-You can also opt to increase the size of the queue dynamically to accommodate new items. This involves reallocating more memory for the underlying buffer.
+- **Bi-directional Traversal**: Allows for both forward and backward traversal, a necessity for certain queue operations such as tail management and removing from the end.
+- **Efficient Tail Operations**: Eliminates the need to traverse the entire list to find the tail, significantly reducing time complexity for operations that involve the tail.
+<br>
 
-#### Example: Dynamic Memory Allocation
 
-For certain applications where it is crucial to not lose any data, dynamically increasing the queue size can be a useful strategy.
 
-#### Code Example: Dynamically Increasing The Queue Size
+#### Explore all 55 answers here 👉 [Devinterview.io - Queue Data Structure](https://devinterview.io/questions/data-structures-and-algorithms/queue-data-structure-interview-questions)
 
-```python
-def enqueue(self, item):
-    if self.is_full():
-        self.size *= 2  # Double the size of the queue
-        new_queue = [None] * self.size
-        for i, val in enumerate(self.queue):
-            new_queue[i] = val
-        self.queue = new_queue
-        self.tail = (self.tail + 1) % self.size
-        self.queue[self.tail] = item
-    else:
-        # Normal enqueue operation
-        self.tail = (self.tail + 1) % self.size
-        self.queue[self.tail] = item
-```
+<br>
 
----
-## 🔹 5. When should I use _Stack_ or _Queue_ data structures instead of _Arrays/Lists_?
-
-### Answer
-
-👉🏼 Check out all 9 answers here: [Devinterview.io - Queues](https://devinterview.io/data/queues-interview-questions)
-
----
-
-## 🔹 6. Name the _Most Efficient_ way to implement _Stack_ and _Queue_ together.
-
-### Answer
-
-👉🏼 Check out all 9 answers here: [Devinterview.io - Queues](https://devinterview.io/data/queues-interview-questions)
-
----
-
-## 🔹 7. Implement a _Queue_ using _Two Stacks_.
-
-### Answer
-
-👉🏼 Check out all 9 answers here: [Devinterview.io - Queues](https://devinterview.io/data/queues-interview-questions)
-
----
-
-## 🔹 8. Implement a _Queue_ using only _One Stack_.
-
-### Answer
-
-👉🏼 Check out all 9 answers here: [Devinterview.io - Queues](https://devinterview.io/data/queues-interview-questions)
-
----
-
-## 🔹 9. Implement _Stack_ using _Two Queues_ with efficient push.
-
-### Answer
-
-👉🏼 Check out all 9 answers here: [Devinterview.io - Queues](https://devinterview.io/data/queues-interview-questions)
-
----
+<a href="https://devinterview.io/questions/data-structures-and-algorithms/">
+<img src="https://firebasestorage.googleapis.com/v0/b/dev-stack-app.appspot.com/o/github-blog-img%2Fdata-structures-and-algorithms-github-img.jpg?alt=media&token=fa19cf0c-ed41-4954-ae0d-d4533b071bc6" alt="data-structures-and-algorithms" width="100%">
+</a>
+</p>
 
